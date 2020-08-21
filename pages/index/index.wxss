@@ -1,0 +1,29 @@
+.input-group{
+  display: flex;
+  justify-content: space-between;
+  width: 750rpx;
+  padding: 20rpx 15rpx;
+  margin-bottom: 20rpx;
+  box-sizing: border-box;
+}
+.input-group .input,.input-group .button{
+  height: 60rpx;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 11pt;
+  box-sizing: border-box;
+}
+.input-group .input{
+  width: 500rpx;
+  margin-right: 20rpx;
+  border: 1px solid #aaa;
+  padding: 5rpx 15rpx;
+}
+.input-group .button{
+  width: 180rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  background: #09bb07;
+  color: #fff;
+}
