@@ -1,0 +1,94 @@
+<view class="mask" wx:if='{{isShow}}'>
+  <view class="content" style="{{sizeConfig.modalHeight ? ('height:' + sizeConfig.modalHeight) : ''}}">
+    <view class="top">
+      <view class="flex-col-center view">
+        <image class="img" src="./images/return.png" catchtap='back' wx:if='{{showBack && mode == "default"}}'></image>
+        <label wx:elif='{{mode == "select"}}' catchtap='toggleMode'>取消</label>
+      </view>
+      <view class="flex-col-center view">
+        <block wx:if='{{dir.length == 0}}'>
+          文件夹
+        </block>
+        <block wx:else>
+          {{dir[dir.length - 1]}}
+        </block>
+      </view>
+      <view class="flex-col-center view">
+        <image class="img" src="./images/add.png" catchtap='add' wx:if='{{mode == "default"}}'></image>
+      </view>
+    </view>
+    <view class="list" style="{{sizeConfig.listHeight ? ('height:' + sizeConfig.listHeight) : ''}}">
+      <block wx:for="{{dirList}}" wx:key='dirList'>
+        <view class="item" catchtap='tapDir' data-name='{{item.fileName}}' data-type='{{item.type}}'
+          catchlongpress='longpress'>
+          <view class="view">
+            <view class="icon">
+              <image class="img" src="./images/dir.png" mode="aspectFill"></image>
+            </view>
+            <view class="name">
+              {{item.fileName}}
+            </view>
+          </view>
+        </view>
+      </block>
+      <block wx:for="{{fileList}}" wx:key='fileList'>
+        <view class="item" catchtap='tapFile' wx:if='{{item.type != "dir"}}' data-index='{{index}}' data-name='{{item.fileName}}'
+          data-type='{{item.type}}' catchlongpress='longpress'>
+          <view class="view">
+            <view class="icon">
+              <image class="img" src="{{item.path}}" mode="aspectFill" wx:if='{{item.type == "img"}}'></image>
+              <image class="img" src="./images/file.png" mode="aspectFill" wx:else></image>
+              <view class="file-type" wx:if='{{item.type != "img"}}'>
+                {{item.extension}}
+              </view>
+              <view class="checkbox {{item.selected?'active':''}}" wx:if='{{mode == "select"}}'></view>
+            </view>
+            <view class="name">
+              {{item.fileName}}
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="bottom">
+      <view class="flex" catchtap='toggleMode'>
+        <view class="flex-col-center" wx:if='{{multiple}}'>
+          <view>
+            <image class="multiple" mode="aspectFill" src="./images/multiple.png"></image>
+          </view>
+        </view>
+        <view class="flex-col-center" wx:if='{{multiple}}'>
+          <view class="multiple-tip {{mode == 'select'?'active':''}}">
+            多选模式
+          </view>
+        </view>
+      </view>
+      <view class='flex-end'>
+        <view class="cancel" catchtap='cancelModal'>
+        关闭
+        </view>
+        <view class="confirm" catchtap='confirmModal'>
+          确定
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="input-modal" wx:if="{{showInputModal}}">
+  <view class="input-modal-content">
+    <view class="input-modal-title">
+      {{inputTitle}}
+    </view>
+    <view class="input-modal-text">
+      {{inputText}}
+    </view>
+    <view class="input-box">
+      <input class="input" placeholder="请输入内容" value="{{value}}" bindinput="input" data-name='value' />
+    </view>
+    <view class="input-modal-button">
+      <view class="view" catchtap='hideInputModal'>取消</view>
+      <view class="view" catchtap='confirmInputModal'>确定</view>
+    </view>
+  </view>
+</view>

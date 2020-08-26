@@ -1,20 +1,14 @@
-<view class="input-group">
-  <view class="input">
-    <input bindinput="input" data-name="Prefix"/>
-  </view>
-  <view class="button" catchtap='file'>
+<cosFileManager id="cosFileManager" bindselected='selectedFile'></cosFileManager>
+<view>
+  <block wx:for='{{fileList}}' wx:key='fileList'>
     <view>
-      测试
+      {{item.path}}
     </view>
-  </view>
+  </block>
 </view>
-<view class="input-group">
-  <view class="input">
-    <input bindinput="input" data-name="Delimiter"/>
-  </view>
-  <view class="button" catchtap='file'>
-    <view>
-      测试
-    </view>
-  </view>
+
+<view>
+  <button catchtap='chooseFile' type="primary">
+    选取文件
+  </button>
 </view>

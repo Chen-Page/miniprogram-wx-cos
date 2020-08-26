@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "cosFileManager": "../../components/cosFileManager/cosFileManager"
+  }
 }

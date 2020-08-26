@@ -1,4 +1,4 @@
-// 上传文件格式
+// 文件格式
 
 const audio = [ // 音频格式
   "mp3",
@@ -22,7 +22,14 @@ const video = [ // 视频格式
   "mpeg",
   "asf",
   "rm",
-  "navi"
+  "navi",
+  "ogv",
+  "m4v",
+  "wmv",
+  "ogm",
+  "webm",
+  "asx",
+  "mpg"
 ]
 
 const img = [ // 图片格式
@@ -33,7 +40,15 @@ const img = [ // 图片格式
   "webp",
   "jpeg",
   "ico",
-  "bmp"
+  "bmp",
+  "dib",
+  "svgz",
+  "tif",
+  "xbm",
+  "jfif",
+  "pjpeg",
+  "pjp",
+  "tiff"
 ]
 
 module.exports = {

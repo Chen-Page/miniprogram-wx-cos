@@ -1,13 +1,10 @@
-let fsm = require('../../js/fileManager')
-
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    Prefix: '',
-    Delimiter: ''
+    
   },
 
   /**
@@ -31,21 +28,21 @@ Page({
     
   },
 
-  input (e) {
-    let name = e.currentTarget.dataset.name
-    let value = e.detail.value
+  chooseFile () {
+    let cosFileManager = this.selectComponent('#cosFileManager')
+    cosFileManager.show({
+      path: ''
+    })
+  },
+
+  selectedFile (e) {
+    console.log(e)
+    let selectedList = e.detail.selectedList
     this.setData({
-      [name]: value
+      fileList: selectedList
     })
   },
-  file () {
-    fsm.dir({
-      Prefix: this.data.Prefix,
-      Delimiter: this.data.Delimiter
-    }).then((res) => {
-      console.log(res)
-    })
-  },
+
   /**
    * 生命周期函数--监听页面隐藏
    */
